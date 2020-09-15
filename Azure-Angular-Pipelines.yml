@@ -20,66 +20,66 @@ stages:
     displayName: Build
     pool:
       vmImage: 'ubuntu-latest'
-
+    steps:
 # Copy source files from working directory to Staging Directory
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**/*.*'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+      inputs:
+       SourceFolder: '$(system.defaultworkingdirectory)'
+       Contents: '**/*.*'
+       TargetFolder: '$(build.artifactstagingdirectory)'
+      condition: succeededOrFailed()
 
 # To copy manifest file to staging directory
-- task: CopyFiles@2
-  displayName: 'Copy manifest Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '\manifest.yml'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
+    - task: CopyFiles@2
+      displayName: 'Copy manifest Files to: $(build.artifactstagingdirectory)'
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)'
+        Contents: '\manifest.yml'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+      condition: succeededOrFailed()
 
 # Prepare SonarQube analysis
-- task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
-  displayName: 'Prepare analysis on SonarQube'
-  inputs:
-    SonarQube: AzureSonar
-    scannerMode: Other
+     - task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
+       displayName: 'Prepare analysis on SonarQube'
+       inputs:
+         SonarQube: AzureSonar
+         scannerMode: Other
 
 # Run SonarQube code analysis
-- task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4
-  displayName: 'Run Code Analysis'
+     - task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4
+       displayName: 'Run Code Analysis'
 
 # Publish SonarQube quality analysis report
-- task: SonarSource.sonarqube.291ed61f-1ee4-45d3-b1b0-bf822d9095ef.SonarQubePublish@4
-  displayName: 'Publish Quality Gate Result'
+     - task: SonarSource.sonarqube.291ed61f-1ee4-45d3-b1b0-bf822d9095ef.SonarQubePublish@4
+       displayName: 'Publish Quality Gate Result'
 
 # Build Docker Image
-- task: Docker@0
-  displayName: 'Build Image'
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: DockerHubRegistry
-    dockerFile: Dockerfile
-    imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
-    includeSourceTags: true
-    includeLatestTag: true
+     - task: Docker@0
+       displayName: 'Build Image'
+       inputs:
+         containerregistrytype: 'Container Registry'
+         dockerRegistryConnection: DockerHubRegistry
+         dockerFile: Dockerfile
+         imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
+         includeSourceTags: true
+         includeLatestTag: true
 
 # Push Docker Image
-- task: Docker@0
-  displayName: 'Push Image'
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: DockerHubRegistry
-    action: 'Push an image'
-    imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
-    additionalImageTags: latest
-    includeSourceTags: true
-    includeLatestTag: true
+     - task: Docker@0
+       displayName: 'Push Image'
+       inputs:
+         containerregistrytype: 'Container Registry'
+         dockerRegistryConnection: DockerHubRegistry
+         action: 'Push an image'
+         imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
+         additionalImageTags: latest
+         includeSourceTags: true
+         includeLatestTag: true
 
 # Publish Artifacts
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
+     - task: PublishBuildArtifacts@1
+       displayName: 'Publish Artifact: drop'
+       inputs:
+         PathtoPublish: '$(build.artifactstagingdirectory)'
+         condition: succeededOrFailed()
