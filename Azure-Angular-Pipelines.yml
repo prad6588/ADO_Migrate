@@ -1,7 +1,8 @@
-# This is only for demo of Angular app, doesn’t contain any confidential source codes.
-# Angular Application Build steps
+# Starter pipeline - Angular Application Build steps
 # DockerImage from hub.docker.com
 # Artifacts pushed to private dockerhub for demo purpose
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 
 trigger:
 - master
