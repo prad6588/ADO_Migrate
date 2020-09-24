@@ -6,7 +6,8 @@ metadata:
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2 
 kind: Deployment 
 metadata: 
-  name: angular-deployment 
+  name: angular-deployment
+  namespace: !{namespace}! 
 spec: 
   selector: 
     matchLabels: 
@@ -26,7 +27,8 @@ spec:
 kind: Service 
 apiVersion: v1 
 metadata: 
-  name: angular-service 
+  name: angular-service
+  namespace: !{namespace}!
 spec: 
   selector: 
     app: angular 
