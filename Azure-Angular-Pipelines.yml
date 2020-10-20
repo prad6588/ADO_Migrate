@@ -88,6 +88,9 @@ stages:
         ./trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --format template --template "@contrib/gitlab.tpl" -o gl-container-scanning-report.json ramv1010/angularappdemo:$(Build.BuildId)
         ./trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --severity HIGH ramv1010/angularappdemo:$(Build.BuildId)
         ./trivy --exit-code 1 --cache-dir .trivycache/ --severity CRITICAL --no-progress ramv1010/angularappdemo:$(Build.BuildId)
+        ./trivy --exit-code 1 --cache-dir .trivycache/ --severity LOW --no-progress ramv1010/angularappdemo:$(Build.BuildId)
+        ./trivy --exit-code 1 --cache-dir .trivycache/ --severity MEDIUM --no-progress ramv1010/angularappdemo:$(Build.BuildId)
+
 
 # Publish Artifacts
     - task: PublishBuildArtifacts@1
