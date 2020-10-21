@@ -81,7 +81,7 @@ stages:
         includeSourceTags: true
         includeLatestTag: true
     
-    - Trivy Security Scan: |
+    - bash: |
         displayName: 'Trivy Security Scan'
         export TRIVY_VERSION=$(wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
         echo $TRIVY_VERSION
