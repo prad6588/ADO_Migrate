@@ -82,7 +82,6 @@ stages:
         includeLatestTag: true
     
     - bash: |
-        displayName: 'Trivy Security Scan'
         export TRIVY_VERSION=$(wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
         echo $TRIVY_VERSION
         wget --no-verbose https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz -O - | tar -zxvf -
@@ -91,7 +90,7 @@ stages:
         ./trivy --exit-code 1 --cache-dir .trivycache/ --severity CRITICAL --no-progress ramv1010/angularappdemo:$(Build.BuildId)
         ./trivy --exit-code 0 --cache-dir .trivycache/ --severity LOW --no-progress ramv1010/angularappdemo:$(Build.BuildId)
         ./trivy --exit-code 0 --cache-dir .trivycache/ --severity MEDIUM --no-progress ramv1010/angularappdemo:$(Build.BuildId)
-
+         displayName: 'Trivy Security Scan'
 
 # Publish Artifacts
     - task: PublishBuildArtifacts@1
