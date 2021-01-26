@@ -128,7 +128,7 @@ stages:
 #         displayName: 'Trivy Security Scan'
 
 # Publish Artifacts
-#    - task: PublishBuildArtifacts@1
+#      - task: PublishBuildArtifacts@1
 #      displayName: 'Publish Artifact: drop'
 #      inputs:
 #        PathtoPublish: '$(build.artifactstagingdirectory)'
