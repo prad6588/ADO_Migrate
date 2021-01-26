@@ -20,8 +20,8 @@ spec:
     spec: 
       containers: 
       - name: angular 
-        #image: cdedevopsacr.azurecr.io/angularapp:449
-        image: ramv1010/angularappdemo:latest
+        image: cdedevopsacr.azurecr.io/angularapp:449
+        #image: ramv1010/angularappdemo:latest
         ports: 
         - containerPort: 80
 --- 
