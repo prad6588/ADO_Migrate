@@ -88,9 +88,9 @@ stages:
 #- task: Docker@2
 #  displayName: 'Push Image'
   inputs:
-  repository: AngularApp
-  command: push
-  tags: latest
+    repository: AngularApp
+    command: push
+    tags: latest
 
 #Your build pipeline references an undefined variable named ‘wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 
