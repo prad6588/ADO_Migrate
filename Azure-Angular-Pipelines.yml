@@ -50,7 +50,7 @@ stages:
               imageName: 'cdedevopsacr.azurecr.io/angularapp:latest'
               includeSourceTags: true
               includeLatestTag: true
-            inputs:
+            #inputs:
               repository: AngularApp
               command: push
               tags: latest
@@ -64,7 +64,6 @@ stages:
           wget --no-verbose
           https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz
           -O - | tar -zxvf -
-
           ./trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --format
           template --template "@contrib/gitlab.tpl" -o
           gl-container-scanning-report.json
