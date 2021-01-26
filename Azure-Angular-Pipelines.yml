@@ -84,8 +84,8 @@ stages:
  #       includeLatestTag: true
 
 # Push Docker Image
-  steps:
-- task: Docker@2
+#  steps:
+#- task: Docker@2
   displayName: 'Push Image'
   inputs:
     containerRegistry: cdedevopsacr
@@ -95,7 +95,7 @@ stages:
 
 #Your build pipeline references an undefined variable named ‘wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 
-steps:
+#steps:
 #displayName: 'Trivy Security Scan'
 - bash: |
    #This script will pull the latest trivy software from the github and scan against the image.
