@@ -134,6 +134,6 @@ steps:
 #        PathtoPublish: '$(build.artifactstagingdirectory)'
 #        condition: succeededOrFailed()
 
-steps:
+#steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
