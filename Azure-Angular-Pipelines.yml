@@ -86,7 +86,7 @@ stages:
 # Push Docker Image
 #  steps:
 #- task: Docker@2
-  displayName: 'Push Image'
+#  displayName: 'Push Image'
   inputs:
     containerRegistry: cdedevopsacr
     repository: AngularApp
