@@ -106,7 +106,7 @@ stages:
         ./trivy --exit-code 1 --cache-dir .trivycache/ --severity CRITICAL --no-progress cdedevopsacr.azurecr.io/angularapp:latest
         ./trivy --exit-code 0 --cache-dir .trivycache/ --severity LOW --no-progress cdedevopsacr.azurecr.io/angularapp:latest
         ./trivy --exit-code 0 --cache-dir .trivycache/ --severity MEDIUM --no-progress cdedevopsacr.azurecr.io/angularapp:latest
-      displayName: 'Trivy Security Scan'
+        displayName: 'Trivy Security Scan'
 
 
 
