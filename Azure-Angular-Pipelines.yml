@@ -5,7 +5,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- develop
+- master
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -65,7 +65,8 @@ stages:
         containerregistrytype: 'Container Registry'
         dockerRegistryConnection: DockerHubRegistry
         dockerFile: Dockerfile
-        imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
+        imageName: 'cdedevopsacr.azurecr.io/angularapp:latest'
+        #imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
         includeSourceTags: true
         includeLatestTag: true
 
@@ -76,7 +77,8 @@ stages:
         containerregistrytype: 'Container Registry'
         dockerRegistryConnection: DockerHubRegistry
         action: 'Push an image'
-        imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
+        imageName: 'cdedevopsacr.azurecr.io/angularapp:latest'
+        #imageName: 'ramv1010/angularappdemo:$(Build.BuildId)'
         additionalImageTags: latest
         includeSourceTags: true
         includeLatestTag: true
