@@ -68,4 +68,4 @@ stages:
                         ./trivy --exit-code 0 --cache-dir .trivycache/ --severity MEDIUM --no-progress cdedevopsacr.azurecr.io/angularapp:latest                
                 displayName:'Trivy Security Scan'
           - task: PublishBuildArtifacts@1
-              displayName: 'Publish Artifact: drop'
+            displayName: 'Publish Artifact: drop'
