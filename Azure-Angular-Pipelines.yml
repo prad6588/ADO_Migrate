@@ -55,7 +55,7 @@ stages:
               command: push
               tags: latest
 #Your build pipeline references an undefined variable named ‘wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-            - bash: |
+            #- bash: |
                 #This script will pull the latest trivy software from the github and scan against the image.
                 #!/bin/bash
                 export TRIVY_VERSION=$(wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
