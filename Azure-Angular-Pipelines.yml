@@ -50,10 +50,10 @@ stages:
               imageName: 'cdedevopsacr.azurecr.io/angularapp:latest'
               includeSourceTags: true
               includeLatestTag: true
-          inputs:
-            repository: AngularApp
-            command: push
-            tags: latest
+            inputs:
+              repository: AngularApp
+              command: push
+              tags: latest
           - bash: >
               export TRIVY_VERSION=$(wget -qO -
               "https://api.github.com/repos/aquasecurity/trivy/releases/latest" |
