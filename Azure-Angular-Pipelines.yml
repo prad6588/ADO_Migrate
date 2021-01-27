@@ -55,17 +55,17 @@ stages:
               command: push
               tags: latest
 #Your build pipeline references an undefined variable named ‘wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-          - bash:
-                #This script will pull the latest trivy software from the github and scan against the image.
-                        !/bin/bash
-                        export TRIVY_VERSION=$(wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-                        echo $TRIVY_VERSION
-                        wget https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz -O - | tar -zxvf -
-                        ./trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --format template --template "@contrib/gitlab.tpl" -o gl-container-scanning-report.json cdedevopsacr.azurecr.io/angularapp:latest
-                        ./trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --severity HIGH cdedevopsacr.azurecr.io/angularapp:latest
-                        ./trivy --exit-code 1 --cache-dir .trivycache/ --severity CRITICAL --no-progress cdedevopsacr.azurecr.io/angularapp:latest
-                        ./trivy --exit-code 0 --cache-dir .trivycache/ --severity LOW --no-progress cdedevopsacr.azurecr.io/angularapp:latest
-                        ./trivy --exit-code 0 --cache-dir .trivycache/ --severity MEDIUM --no-progress cdedevopsacr.azurecr.io/angularapp:latest                
-                displayName:'Trivy Security Scan'
+#          - bash:
+#                #This script will pull the latest trivy software from the github and scan against the image.
+#                        !/bin/bash
+#                        export TRIVY_VERSION=$(wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+#                        echo $TRIVY_VERSION
+#                        wget https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz -O - | tar -zxvf -
+#                        ./trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --format template --template "@contrib/gitlab.tpl" -o gl-container-scanning-report.json cdedevopsacr.azurecr.io/angularapp:latest
+#                        ./trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --severity HIGH cdedevopsacr.azurecr.io/angularapp:latest
+#                        ./trivy --exit-code 1 --cache-dir .trivycache/ --severity CRITICAL --no-progress cdedevopsacr.azurecr.io/angularapp:latest
+#                        ./trivy --exit-code 0 --cache-dir .trivycache/ --severity LOW --no-progress cdedevopsacr.azurecr.io/angularapp:latest
+#                        ./trivy --exit-code 0 --cache-dir .trivycache/ --severity MEDIUM --no-progress cdedevopsacr.azurecr.io/angularapp:latest                
+#                displayName:'Trivy Security Scan'
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact: drop'
