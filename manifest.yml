@@ -72,14 +72,14 @@ spec:
       metricName: counter_active_requests
       targetAverageValue: 30
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: !{namespace}!
-  name: angularappsecret
-data:
-  domainpid.userid: !{namespace}!-userid
-  domainpid.password: !{namespace}!-password
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  namespace: !{namespace}!
+#  name: angularappsecret
+#data:
+#  domainpid.userid: !{namespace}!-userid
+#  domainpid.password: !{namespace}!-password
 ---
 
 
