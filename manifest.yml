@@ -42,7 +42,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: #{LowerCaseRepoNameDash}#
+  name: !{namespace}!-ingress
   namespace: !{namespace}!
 spec:
   rules:
@@ -51,19 +51,19 @@ spec:
       paths:
       - path: /health
         backend:
-          serviceName: !{namespace}!
+          serviceName: !{namespace}!-ingress
           servicePort: 8080
 ---
 kind: HorizontalPodAutoscaler
 apiVersion: autoscaling/v2beta1
 metadata:
-  name: #{LowerCaseRepoNameDash}#
+  name: !{namespace}!-hpa
   namespace: !{namespace}!
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: #{LowerCaseRepoNameDash}#
+    name: !{namespace}!-hpa
   minReplicas: 6
   maxReplicas: 10
   metrics:
@@ -78,8 +78,8 @@ metadata:
   namespace: !{namespace}!
   name: angularappsecret
 data:
-  domainpid.userid: !{namespace}!
-  domainpid.password: !{namespace}!
+  domainpid.userid: !{namespace}!-userid
+  domainpid.password: !{namespace}!-password
 ---
 
 
