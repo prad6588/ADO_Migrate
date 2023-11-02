@@ -7,4 +7,4 @@ cd ..
 rm -rf AngularApp.git
 git remote add origin https://prad6588:$GITHUB_TOKEN@github.com/prad6588/AngularApp.git
 git remote set-url origin https://prad6588:$GITHUB_TOKENV@github.com/prad6588/AngularApp.git
-gh repo edit prad6588/AngularApp --default-branch main
+gh repo edit AngularApp --default-branch main
