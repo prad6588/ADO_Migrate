@@ -5,3 +5,4 @@ cd AngularApp.git
 git push --mirror https://prad6588:$GITHUB_TOKEN@github.com/prad6588/AngularApp.git
 cd ..
 rm -rf AngularApp.git
+gh repo edit prad6588/AngularApp.git --default-branch main
