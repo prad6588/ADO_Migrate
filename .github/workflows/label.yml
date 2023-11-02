@@ -4,6 +4,6 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - run: gh repo view
+      - run: gh repo create angular --private
         env:
           GITHUB_TOKEN: ${{ GH_PAT }}
