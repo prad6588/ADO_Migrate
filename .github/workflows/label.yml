@@ -4,6 +4,11 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - run: gh repo create angular --private
-        env:
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: |
+         chmod +x ./migrate.sh
+         ./migrate.sh
+      shell: bash   
+      env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
