@@ -13,3 +13,4 @@ jobs:
       shell: bash   
       env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          ADO_TOKEN: ${{ secrets.ADO_TOKEN }}
