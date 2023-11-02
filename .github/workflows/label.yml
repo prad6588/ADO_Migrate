@@ -7,6 +7,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run script file
       run: |
+         git clone --bare https://oauth2:$ADO_TOKEN@dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git/AngularApp
          chmod +x ./migrate.sh
          ./migrate.sh
       shell: bash   
