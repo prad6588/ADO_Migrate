@@ -6,4 +6,4 @@ jobs:
     steps:
       - run: gh repo create angular --private
         env:
-          GITHUB_TOKEN: ${{ GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
