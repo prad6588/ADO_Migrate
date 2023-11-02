@@ -1,0 +1,9 @@
+name: Migrate
+on: [push]
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh repo view
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
