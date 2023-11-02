@@ -6,5 +6,5 @@ git push --mirror https://prad6588:$GITHUB_TOKEN@github.com/prad6588/AngularApp.
 cd ..
 rm -rf AngularApp.git
 git remote add origin https://prad6588:$GITHUB_TOKEN@github.com/prad6588/AngularApp.git
-git remote set-url origin https://prad6588:$GITHUB_TOKENV@github.com/prad6588/AngularApp.git
-gh repo edit AngularApp --default-branch main
+git remote set-url origin https://prad6588:$GITHUB_TOKEN@github.com/prad6588/AngularApp.git
+curl -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/prad6588/AngularApp/collaborators/prad6588 -d '{"permission":"triage"}'
