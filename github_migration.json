@@ -1,13 +1,13 @@
 {
 	"github_migration": [
 		{
-			"Destination_Reponame": "pradeeep6588/AngularApp",
+			"Destination_Reponame": "AngularApp",
 			"Source_Repo": "https://CDEDevOps@dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git/AngularApp",
 			"Team_Permission": "Dev",
 			"Owner": ""
 		},
 		{
-			"Destination_Reponame": "pradeeep6588/DevOps_Bots",
+			"Destination_Reponame": "DevOps_Bots",
 			"Source_Repo": "https://CDEDevOps@dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git/DevOps_Bots",
 			"Team_Permission": "Dev",
 			"Owner": ""
