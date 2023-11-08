@@ -1,5 +1,6 @@
 set -x
 jq -c '.github_migration[]' "github_migration.json" | while read -r application; do
+            Destination_Reponame=$(echo "$application" | jq -r '.Destination_Reponame')
             Source_Repo=$(echo "$application" | jq -r '.Source_Repo')
             Team_Permission=$(echo "$application" | jq -r '.Team_Permission')
             Owner=$(echo "$application" | jq -r '.Owner')
@@ -10,10 +11,7 @@ jq -c '.github_migration[]' "github_migration.json" | while read -r application;
             echo "Owner $Owner"    
 
 gh repo create pradeep6588/$Destination_Reponame --private
-
-Destination_Reponame=(${IN//@/ })
-echo ${arrIN[1]}                
-git clone --bare https://oauth2:$ADO_TOKEN@dev.azure.com/${arrIN[1]} || echo "Repo exists"
+git clone --bare https://oauth2:$ADO_TOKEN@dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git/$Destination_Reponame || echo "Repo exists"
 cd $Destination_Reponame.git
 git push --mirror https://prad6588:$GITHUB_TOKEN@github.com/pradeep6588/$Destination_Reponame.git
 cd ..
@@ -25,4 +23,3 @@ curl -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Beare
   
         done
         
-
