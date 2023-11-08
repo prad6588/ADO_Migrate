@@ -3,13 +3,13 @@
 		{
 			"Destination_Reponame": "AngularApp",
 			"Source_Repo": "https://CDEDevOps@dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git/AngularApp",
-			"Team_Permission": "Dev",
+			"Team_Permission": "ConED_DevOps,ConED_Dev",
 			"Owner": ""
 		},
 		{
 			"Destination_Reponame": "DevOps_Bots",
 			"Source_Repo": "https://CDEDevOps@dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git/DevOps_Bots",
-			"Team_Permission": "Dev",
+			"Team_Permission": "ConED_DevOps,ConED_Dev",
 			"Owner": ""
 		}
 	]
