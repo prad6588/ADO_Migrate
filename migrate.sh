@@ -25,6 +25,9 @@ gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets -
 # git push --mirror https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
 # cd ..
 # rm -rf $Destination_Reponame.git
+
+gh api -X PUT '/orgs/$Orgname/teams/ConED_Dev/repos/$Orgname/$Destination_Reponame' -f 'permission=maintain'
+
 git remote add origin https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
 git remote set-url origin https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
 curl -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/$Orgname/$Destination_Reponame/collaborators/$Team_Permission -d '{"permission":"triage"}'
