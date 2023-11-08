@@ -4,7 +4,7 @@ Sourcerepourl=dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git
 
 set -x
 jq -c '.github_migration[]' "github_migration.json" | while read -r application; do
-            Destination_Reponame=$(echo "$application" | jq -r '.Source_Repo')
+            Destination_Reponame=$(echo "$application" | jq -r '.Source_Repo_name')
             Team_Permission=$(echo "$application" | jq -r '.Team_Permission')
             Owner=$(echo "$application" | jq -r '.Owner')
 
