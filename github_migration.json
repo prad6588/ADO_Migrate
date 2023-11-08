@@ -1,12 +1,12 @@
 {
 	"github_migration": [
 		{
-			"Source_Repo": "AngularApp",
+			"Source_Repo_name": "AngularApp",
 			"Team_Permission": "ConED_DevOps,ConED_Dev",
 			"Owner": ""
 		},
 		{
-			"Source_Repo": "DevOps_Bots",
+			"Source_Repo_name": "DevOps_Bots",
 			"Team_Permission": "ConED_DevOps,ConED_Dev",
 			"Owner": ""
 		}
