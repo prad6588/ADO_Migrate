@@ -12,12 +12,19 @@ jq -c '.github_migration[]' "github_migration.json" | while read -r application;
             echo "Team_Permission $Team_Permission"
             echo "Owner $Owner"    
 
-gh repo create $Orgname/$Destination_Reponame --private
-git clone --bare https://oauth2:$ADO_TOKEN@$Sourcerepourl/$Destination_Reponame || echo "Repo exists"
-cd $Destination_Reponame.git
-git push --mirror https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
-cd ..
-rm -rf $Destination_Reponame.git
+gh extension install github/gh-ado2gh
+gh extension upgrade github/gh-ado2gh
+export GH_PAT="$GITHUB_TOKEN"
+export ADO_PAT="$ADO_TOKEN"
+
+gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets Team --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame
+
+# gh repo create $Orgname/$Destination_Reponame --private
+# git clone --bare https://oauth2:$ADO_TOKEN@$Sourcerepourl/$Destination_Reponame || echo "Repo exists"
+# cd $Destination_Reponame.git
+# git push --mirror https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
+# cd ..
+# rm -rf $Destination_Reponame.git
 git remote add origin https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
 git remote set-url origin https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
 curl -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/$Orgname/$Destination_Reponame/collaborators/$Team_Permission -d '{"permission":"triage"}'
