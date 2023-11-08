@@ -10,7 +10,7 @@ jq -c '.github_migration[]' "github_migration.json" | while read -r application;
             echo "Team_Permission $Team_Permission"
             echo "Owner $Owner"    
 
-gh repo create pradeep6588/$Destination_Reponame --private -t $Team_Permission
+gh repo create pradeep6588/$Destination_Reponame --private
 git clone --bare https://oauth2:$ADO_TOKEN@dev.azure.com/CDEDevOps/CDEDevOps_Assets/_git/$Destination_Reponame || echo "Repo exists"
 cd $Destination_Reponame.git
 git push --mirror https://prad6588:$GITHUB_TOKEN@github.com/pradeep6588/$Destination_Reponame.git
