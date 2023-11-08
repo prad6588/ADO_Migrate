@@ -17,7 +17,7 @@ gh extension upgrade github/gh-ado2gh
 export GH_PAT="$GITHUB_TOKEN"
 export ADO_PAT="$ADO_TOKEN"
 
-gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets Team --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame
+gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame
 
 # gh repo create $Orgname/$Destination_Reponame --private
 # git clone --bare https://oauth2:$ADO_TOKEN@$Sourcerepourl/$Destination_Reponame || echo "Repo exists"
