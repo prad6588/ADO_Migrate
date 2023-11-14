@@ -1,4 +1,4 @@
-cat file.json | json_pp
+cat github_migration.json | json_pp
 
 set -x
 jq -c '.github_migration[]' "github_migration.json" | while read -r application; do
