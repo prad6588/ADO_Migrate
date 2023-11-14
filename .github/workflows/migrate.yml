@@ -11,6 +11,7 @@ jobs:
          ./validate.sh
   MigrateApps:
     runs-on: ubuntu-latest
+    needs: ValidateYml
     steps:
     - uses: actions/checkout@v2
     - name: Run script file
