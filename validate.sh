@@ -10,4 +10,8 @@ jq -c '.github_migration[]' "github_migration.json" | while read -r application;
             echo "Destination_Reponame $Destination_Reponame"
             echo "Team_Permission $Team_Permission"
             echo "Owner $Owner"    
+            
+            if [ "$Destination_Reponame" = "" ]; then
+            exit 1
+            fi
 done
