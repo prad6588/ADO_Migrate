@@ -1,7 +1,7 @@
 name: Migrate
 on: [push]
 jobs:
-  Migrate Apps:
+  MigrateApps:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
