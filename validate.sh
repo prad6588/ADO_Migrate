@@ -1,4 +1,4 @@
-jq github_migration.json &>/dev/null || echo >&2 "invalid JSON"
+cat file.json | json_pp
 
 set -x
 jq -c '.github_migration[]' "github_migration.json" | while read -r application; do
