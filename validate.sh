@@ -1,6 +1,7 @@
+set -ex
 cat github_migration.json | json_pp
 
-set -x
+
 jq -c '.github_migration[]' "github_migration.json" | while read -r application; do
             Destination_Reponame=$(echo "$application" | jq -r '.Source_Repo_name')
             Team_Permission=$(echo "$application" | jq -r '.Team_Permission')
