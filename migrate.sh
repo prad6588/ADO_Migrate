@@ -17,7 +17,7 @@ gh extension upgrade github/gh-ado2gh
 export GH_PAT="$GITHUB_TOKEN"
 export ADO_PAT="$ADO_TOKEN"
 
-myStr="$(git ls-remote -q "https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git" &> /dev/null)";
+myStr="$(git ls-remote "https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git" &> /dev/null)";
 if [[ "$?" -eq 0 ]]
 then
 git clone --bare https://oauth2:$ADO_TOKEN@$Sourcerepourl/$Destination_Reponame
