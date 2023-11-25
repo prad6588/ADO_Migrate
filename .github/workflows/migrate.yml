@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: ValidateYml
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run script file
       run: |
          chmod +x ./migrate.sh
