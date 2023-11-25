@@ -14,6 +14,8 @@ jobs:
     needs: ValidateYml
     steps:
     - uses: actions/checkout@v3
+      with:
+       persist-credentials: "false"
     - name: Run script file
       run: |
          chmod +x ./migrate.sh
