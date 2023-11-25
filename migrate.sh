@@ -28,7 +28,8 @@ git push --mirror https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destin
 cd ..
 rm -rf $Destination_Reponame.git
 else
-gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame
+gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame > log
+cat log
 fi
 
 
