@@ -4,11 +4,6 @@
 			"Source_Repo_name": "DevOps_Bots",
 			"Team_Permission": "ConED_DevOps:admin,ConED_Dev:push",
 			"Owner": ""
-		},
-		{
-			"Source_Repo_name": "AngularApp",
-			"Team_Permission": "ConED_DevOps:admin,ConED_Dev:push",
-			"Owner": ""
 		}
 	]
 }
