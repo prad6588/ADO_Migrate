@@ -17,20 +17,25 @@ gh extension upgrade github/gh-ado2gh
 export GH_PAT="$GITHUB_TOKEN"
 export ADO_PAT="$ADO_TOKEN"
 
-git ls-remote https://prad6588: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@github.com/pradeep6588/DevOps_Bots.git
-myStr="$(git ls-remote "https://$accountname:$GH_PAT@github.com/$Orgname/$Destination_Reponame.git" &> /dev/null)";
+# git ls-remote https://prad6588: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@github.com/pradeep6588/DevOps_Bots.git
+# myStr="$(git ls-remote "https://$accountname:$GH_PAT@github.com/$Orgname/$Destination_Reponame.git" &> /dev/null)";
          
-if [[ "$?" -eq 0 ]]
-then
+# if [[ "$?" -eq 0 ]]
+# then
+# git clone --bare https://oauth2:$ADO_TOKEN@$Sourcerepourl/$Destination_Reponame
+# cd $Destination_Reponame.git
+# git push --mirror https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
+# cd ..
+# rm -rf $Destination_Reponame.git
+# else
+gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame > log
+cat log
 git clone --bare https://oauth2:$ADO_TOKEN@$Sourcerepourl/$Destination_Reponame
 cd $Destination_Reponame.git
 git push --mirror https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git
 cd ..
 rm -rf $Destination_Reponame.git
-else
-gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame > log
-cat log
-fi
+# fi
 
 
 # gh repo create $Orgname/$Destination_Reponame --private
