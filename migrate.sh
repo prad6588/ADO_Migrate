@@ -18,7 +18,7 @@ export GH_PAT="$GITHUB_TOKEN"
 export ADO_PAT="$ADO_TOKEN"
 
 git ls-remote https://prad6588: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@github.com/pradeep6588/DevOps_Bots.git
-myStr="$(git ls-remote "https://$accountname:$GITHUB_TOKEN@github.com/$Orgname/$Destination_Reponame.git" &> /dev/null)";
+myStr="$(git ls-remote "https://$accountname:$GH_PAT@github.com/$Orgname/$Destination_Reponame.git" &> /dev/null)";
          
 if [[ "$?" -eq 0 ]]
 then
