@@ -28,7 +28,7 @@ export ADO_PAT="$ADO_TOKEN"
 # cd ..
 # rm -rf $Destination_Reponame.git
 # else
-git lfs
+# git lfs
 gh ado2gh migrate-repo --ado-org CDEDevOps --ado-team-project CDEDevOps_Assets --ado-repo $Destination_Reponame --github-org $Orgname --github-repo $Destination_Reponame
 cat log
 git clone --bare https://oauth2:$ADO_TOKEN@$Sourcerepourl/$Destination_Reponame
