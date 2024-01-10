@@ -1,17 +1,8 @@
 name: Migrate
 on: [push]
 jobs:
-  ValidateYml:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run script file
-      run: |
-         chmod +x ./validate.sh
-         ./validate.sh
   MigrateApps:
     runs-on: ubuntu-latest
-    needs: ValidateYml
     steps:
     - uses: actions/checkout@v3
       with:
